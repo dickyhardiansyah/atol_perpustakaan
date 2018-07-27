@@ -30,4 +30,29 @@ class Genre {
         $db->close();
         return $genre;
     }
+
+    public static function delete($id) {
+        $db = new Database();
+        $db->prepareAndExecute('DELETE FROM ' . self::$TABLE_NAME . ' WHERE id_genre=?', 'd', $id)
+            ->close();
+    }
+
+    public static function find($id) {
+        $db = new Database();
+        $results = $db->prepareAndExecute('SELECT * FROM ' . self::$TABLE_NAME . ' WHERE id_genre=?', 'd', $id);
+
+        $results->bind_result($id, $nama);
+        while ($results->fetch()) {
+            return new Genre($id, $nama);
+        }
+
+        return null;
+    }
+
+    public static function update($data) {
+        $query = "UPDATE  " . self::$TABLE_NAME . " SET genre=? WHERE id_genre=?";
+        $db = new Database();
+        $db->prepareAndExecute($query, 'sd', $data['nama'], $data['id'])
+            ->close();
+    }
 }
