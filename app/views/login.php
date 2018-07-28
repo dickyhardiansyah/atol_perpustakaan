@@ -41,7 +41,6 @@
                     data: {
                         username: $('#username').val(),
                         password: $('#password').val(),
-                        
                         login: true
                     },
                     success: function(response) {
