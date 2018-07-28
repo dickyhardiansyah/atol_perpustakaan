@@ -3,22 +3,22 @@
 include_once('../app/core/init.php');
 
 if (!isset($_GET['id'])) {
-    redirect('/pelajaran/penerbit');
+    redirect('/pelajaran/genre');
 }
 
 include_once('../app/database/Database.php');
-include_once('../app/models/Penerbit.php');
+include_once('../app/models/Buku.php');
 
-$penerbit = Penerbit::find($_GET['id']);
+$genre = Buku::find($_GET['id']);
 
-if (!$penerbit) {
-    redirect('/pelajaran/penerbit');
+if (!$genre) {
+    redirect('/pelajaran/genre');
 }
 
 include_once('../app/resources/menu.php');
 
-$title = 'Ubah Penerbit - Perpustakaan';
+$title = 'Tambah Buku - Perpustakaan';
 $navMenu = getNavbarMenu($_SESSION['userJenis']);
 $navSubMenu = getNavbarSubMenu($_SESSION['userJenis']);
 
-include_once('../app/views/penerbit/ubah.php');
+include_once('../app/views/genre/ubah.php');
