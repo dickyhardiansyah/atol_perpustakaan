@@ -6,7 +6,7 @@ class Database {
     var $result;
     
     public function __construct() {
-        $this->link = new mysqli('localhost', 'root', '', '10116167_perpustakaan');
+        $this->link = new mysqli('52.230.4.225', 'root', 'code@labs', '10116167_perpustakaan');
     }
 
     public function execute($query) {
