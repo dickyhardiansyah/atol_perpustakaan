@@ -3,7 +3,7 @@
 include_once('../../core/init.php');
 
 if (!isset($_POST['tambah'])) {
-    redirect('/perpustakaan');
+    redirect(ROOT);
 }
 
 include_once('../../resources/status.php');

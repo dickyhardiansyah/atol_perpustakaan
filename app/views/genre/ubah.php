@@ -21,7 +21,7 @@
     $(document).ready(() => {
         $('#ubah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/genre/ubah.php',
+                url: '<?php echo ROOT ?>app/controllers/genre/ubah.php',
                 type: 'POST',
                 data: {
                     id: $('#id').val(),
@@ -33,7 +33,7 @@
                     const resp = JSON.parse(response)
                     if (resp.status === 200) {
                         alert('Berhasil memperbarui genre')
-                        window.location = '/perpustakaan/genre'
+                        window.location = '<?php echo ROOT ?>genre'
                     } else {
                         alert(resp.message)
                     }

@@ -44,7 +44,7 @@
         let peminjaman = [];
         $('#id_anggota').change(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/transaksi/anggota.php',
+                url: '<?php echo ROOT ?>app/controllers/transaksi/anggota.php',
                 type: 'POST',
                 data: {
                     idAnggota: $('#id_anggota').val()
@@ -95,7 +95,7 @@
 
         $('#kembali').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/transaksi/pengembalian.php',
+                url: '<?php echo ROOT ?>app/controllers/transaksi/pengembalian.php',
                 type: 'POST',
                 data: {
                     id_peminjaman: $('#peminjaman').val(),
@@ -104,7 +104,7 @@
                 },
                 success: (response) => {
                     alert('Berhasil melakukan pengembalian')
-                    window.location = '/perpustakaan/transaksi'
+                    window.location = '<?php echo ROOT ?>transaksi'
                 }
             });
         })

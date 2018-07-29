@@ -24,7 +24,7 @@
     $(document).ready(() => {
         $('#tambah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/penerbit/tambah.php',
+                url: '<?php echo ROOT ?>app/controllers/penerbit/tambah.php',
                 type: 'POST',
                 data: {
                     nama: $('#nama').val(),

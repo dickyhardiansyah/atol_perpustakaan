@@ -52,7 +52,7 @@
                         <td><?php echo $item->genre; ?></td>
                         <td id="<?php echo $item->idGenre ?>">
                             <button class="btn red accent-4 waves-effect waves-light hapus"><i class="material-icons">delete</i></button>
-                            <a class="btn red accent-4 waves-effect waves-light edit" href="/perpustakaan/genre/ubah.php?id=<?php echo $item->idGenre ?>"><i class="material-icons">edit</i></a>
+                            <a class="btn red accent-4 waves-effect waves-light edit" href="<?php echo ROOT ?>genre/ubah.php?id=<?php echo $item->idGenre ?>"><i class="material-icons">edit</i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -111,7 +111,7 @@
                     
                     const editButton = $('<a>', {
                         class: 'btn red accent-4 waves-effect waves-light edit',
-                        href: `/perpustakaan/genre/ubah.php?id=${item.idGenre}`
+                        href: `<?php echo ROOT ?>genre/ubah.php?id=${item.idGenre}`
                     }).append($('<i>', { class: 'material-icons' }).append('edit'))
                     
                     td.append(deleteButton)
@@ -124,7 +124,7 @@
 
         const filter = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/genre/filter.php',
+                url: '<?php echo ROOT ?>app/controllers/genre/filter.php',
                 type: 'POST',
                 data: {
                     orderby: $('#orderby').val(),
@@ -140,7 +140,7 @@
 
                         if (confirm(`Apakah anda yakin ingin menghapus genre dengan id ${targetId}`)) {
                             $.ajax({
-                                url: `/perpustakaan/app/controllers/genre/hapus.php?id=${targetId}`,
+                                url: `<?php echo ROOT ?>app/controllers/genre/hapus.php?id=${targetId}`,
                                 type: 'GET',
                                 success: (response) => {
                                     alert('Berhasil menghapus genre')
@@ -179,7 +179,7 @@
 
             if (confirm(`Apakah anda yakin ingin menghapus genre dengan id ${targetId}`)) {
                 $.ajax({
-                    url: `/perpustakaan/app/controllers/genre/hapus.php?id=${targetId}`,
+                    url: `<?php echo ROOT ?>app/controllers/genre/hapus.php?id=${targetId}`,
                     type: 'GET',
                     success: (response) => {
                         alert("Berhasil menghapus genre")

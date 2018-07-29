@@ -82,7 +82,7 @@
 
         let getBookNum = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/buku/count.php',
+                url: '<?php echo ROOT ?>app/controllers/buku/count.php',
                 type: 'POST',
                 data: {
                     kodePenerbit: kodePenerbit,
@@ -114,7 +114,7 @@
 
         $('#ubah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/buku/ubah.php',
+                url: '<?php echo ROOT ?>app/controllers/buku/ubah.php',
                 type: 'POST',
                 data: {
                     kodeLama: $('#kode_lama').val(),
@@ -132,7 +132,7 @@
                     const resp = JSON.parse(response)
                     if (resp.status === 200) {
                         alert('Berhasil memperbarui buku')
-                        window.location = '/perpustakaan/buku'
+                        window.location = '<?php echo ROOT ?>buku'
                     } else {
                         alert(resp.message)
                     }

@@ -77,7 +77,7 @@
                         <?php if ($_SESSION['userJenis'] !== 'Transaksi') { ?>
                         <td id="<?php echo $item->kodeBuku ?>">
                             <button class="btn red accent-4 waves-effect waves-light hapus"><i class="material-icons">delete</i></button>
-                            <a class="btn red accent-4 waves-effect waves-light edit" href="/perpustakaan/buku/ubah.php?id=<?php echo $item->kodeBuku ?>"><i class="material-icons">edit</i></a>
+                            <a class="btn red accent-4 waves-effect waves-light edit" href="<?php echo ROOT ?>buku/ubah.php?id=<?php echo $item->kodeBuku ?>"><i class="material-icons">edit</i></a>
                         </td>
                         <?php } ?>
                     </tr>
@@ -167,7 +167,7 @@
                     
                     const editButton = $('<a>', {
                         class: 'btn red accent-4 waves-effect waves-light edit',
-                        href: `/perpustakaan/buku/ubah.php?id=${item.kodeBuku}`
+                        href: `<?php echo ROOT ?>buku/ubah.php?id=${item.kodeBuku}`
                     }).append($('<i>', { class: 'material-icons' }).append('edit'))
                     
                     td.append(deleteButton)
@@ -181,7 +181,7 @@
 
         const filter = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/buku/filter.php',
+                url: '<?php echo ROOT ?>app/controllers/buku/filter.php',
                 type: 'POST',
                 data: {
                     orderby: $('#orderby').val(),
@@ -203,7 +203,7 @@
 
                         if (confirm(`Apakah anda yakin ingin menghapus buku dengan kode ${targetId}`)) {
                             $.ajax({
-                                url: `/perpustakaan/app/controllers/buku/hapus.php?kode=${targetId}`,
+                                url: `<?php echo ROOT ?>app/controllers/buku/hapus.php?kode=${targetId}`,
                                 type: 'GET',
                                 success: (response) => {
                                     alert("Berhasil menghapus buku")
@@ -249,7 +249,7 @@
 
             if (confirm(`Apakah anda yakin ingin menghapus buku dengan kode ${targetId}`)) {
                 $.ajax({
-                    url: `/perpustakaan/app/controllers/buku/hapus.php?kode=${targetId}`,
+                    url: `<?php echo ROOT ?>app/controllers/buku/hapus.php?kode=${targetId}`,
                     type: 'GET',
                     success: (response) => {
                         alert("Berhasil menghapus buku")

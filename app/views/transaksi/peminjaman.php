@@ -55,7 +55,7 @@
 
         $('#genre').change(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/buku/by_genre.php',
+                url: '<?php echo ROOT ?>app/controllers/buku/by_genre.php',
                 type: 'POST',
                 data: {
                     genre: $('#genre').val()
@@ -87,7 +87,7 @@
 
         $('#tambah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/transaksi/peminjaman.php',
+                url: '<?php echo ROOT ?>app/controllers/transaksi/peminjaman.php',
                 type: 'POST',
                 data: {
                     idAnggota: $('#id_anggota').val(),

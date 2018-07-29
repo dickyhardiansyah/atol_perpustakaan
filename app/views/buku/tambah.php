@@ -80,7 +80,7 @@
 
         let getBookNum = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/buku/count.php',
+                url: '<?php echo ROOT ?>app/controllers/buku/count.php',
                 type: 'POST',
                 data: {
                     kodePenerbit: kodePenerbit,
@@ -108,7 +108,7 @@
 
         $('#tambah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/buku/tambah.php',
+                url: '<?php echo ROOT ?>app/controllers/buku/tambah.php',
                 type: 'POST',
                 data: {
                     kode: $('#kode').val(),

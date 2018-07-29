@@ -26,7 +26,7 @@
     $(document).ready(() => {
         $('#ubah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/penerbit/ubah.php',
+                url: '<?php echo ROOT ?>app/controllers/penerbit/ubah.php',
                 type: 'POST',
                 data: {
                     kodeLama: $('#kode_lama').val(),
@@ -38,7 +38,7 @@
                     const resp = JSON.parse(response)
                     if (resp.status === 200) {
                         alert('Berhasil memperbarui penerbit')
-                        window.location = '/perpustakaan/penerbit'
+                        window.location = '<?php echo ROOT ?>penerbit'
                     } else {
                         alert(resp.message)
                     }

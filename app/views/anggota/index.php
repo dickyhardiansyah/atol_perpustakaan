@@ -68,7 +68,7 @@
                         <td><?php echo $item->tanggalBergabung; ?></td>
                         <td id="<?php echo $item->idAnggota ?>">
                             <button class="btn red accent-4 waves-effect waves-light hapus"><i class="material-icons">delete</i></button>
-                            <a class="btn red accent-4 waves-effect waves-light edit" href="/perpustakaan/anggota/ubah.php?id=<?php echo $item->idAnggota ?>"><i class="material-icons">edit</i></a>
+                            <a class="btn red accent-4 waves-effect waves-light edit" href="<?php echo ROOT ?>anggota/ubah.php?id=<?php echo $item->idAnggota ?>"><i class="material-icons">edit</i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -155,7 +155,7 @@
                     
                     const editButton = $('<a>', {
                         class: 'btn red accent-4 waves-effect waves-light edit',
-                        href: `/perpustakaan/anggota/ubah.php?id=${item.idAnggota}`
+                        href: `<?php echo ROOT ?>anggota/ubah.php?id=${item.idAnggota}`
                     }).append($('<i>', { class: 'material-icons' }).append('edit'))
                     
                     td.append(deleteButton)
@@ -168,7 +168,7 @@
 
         const filter = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/anggota/filter.php',
+                url: '<?php echo ROOT ?>app/controllers/anggota/filter.php',
                 type: 'POST',
                 data: {
                     orderby: $('#orderby').val(),
@@ -188,7 +188,7 @@
 
                         if (confirm(`Apakah anda yakin ingin menghapus anggota dengan id ${targetId}`)) {
                             $.ajax({
-                                url: `/perpustakaan/app/controllers/anggota/hapus.php?id=${targetId}`,
+                                url: `<?php echo ROOT ?>app/controllers/anggota/hapus.php?id=${targetId}`,
                                 type: 'GET',
                                 success: (response) => {
                                     alert("Berhasil menghapus anggota")
@@ -232,7 +232,7 @@
 
             if (confirm(`Apakah anda yakin ingin menghapus anggota dengan id ${targetId}`)) {
                 $.ajax({
-                    url: `/perpustakaan/app/controllers/anggota/hapus.php?id=${targetId}`,
+                    url: `<?php echo ROOT ?>app/controllers/anggota/hapus.php?id=${targetId}`,
                     type: 'GET',
                     success: (response) => {
                         alert("Berhasil menghapus anggota")

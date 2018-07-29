@@ -52,7 +52,7 @@
                         <td><?php echo $item->nama; ?></td>
                         <td id="<?php echo $item->kodePenerbit ?>">
                             <button class="btn red accent-4 waves-effect waves-light hapus"><i class="material-icons">delete</i></button>
-                            <a class="btn red accent-4 waves-effect waves-light edit" href="/perpustakaan/penerbit/ubah.php?id=<?php echo $item->kodePenerbit ?>"><i class="material-icons">edit</i></a>
+                            <a class="btn red accent-4 waves-effect waves-light edit" href="<?php echo ROOT ?>penerbit/ubah.php?id=<?php echo $item->kodePenerbit ?>"><i class="material-icons">edit</i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -110,7 +110,7 @@
                     
                     const editButton = $('<a>', {
                         class: 'btn red accent-4 waves-effect waves-light edit',
-                        href: `/perpustakaan/penerbit/ubah.php?id=${item.kodePenerbit}`
+                        href: `<?php echo ROOT ?>penerbit/ubah.php?id=${item.kodePenerbit}`
                     }).append($('<i>', { class: 'material-icons' }).append('edit'))
                     
                     td.append(deleteButton)
@@ -123,7 +123,7 @@
 
         const filter = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/penerbit/filter.php',
+                url: '<?php echo ROOT ?>app/controllers/penerbit/filter.php',
                 type: 'POST',
                 data: {
                     orderby: $('#orderby').val(),
@@ -139,7 +139,7 @@
 
                         if (confirm(`Apakah anda yakin ingin menghapus penerbit dengan id ${targetId}`)) {
                             $.ajax({
-                                url: `/perpustakaan/app/controllers/penerbit/hapus.php?id=${targetId}`,
+                                url: `<?php echo ROOT ?>app/controllers/penerbit/hapus.php?id=${targetId}`,
                                 type: 'GET',
                                 success: (response) => {
                                     alert('Berhasil menghapus penerbit')
@@ -178,7 +178,7 @@
 
             if (confirm(`Apakah anda yakin ingin menghapus penerbit dengan id ${targetId}`)) {
                 $.ajax({
-                    url: `/perpustakaan/app/controllers/penerbit/hapus.php?id=${targetId}`,
+                    url: `<?php echo ROOT ?>app/controllers/penerbit/hapus.php?id=${targetId}`,
                     type: 'GET',
                     success: (response) => {
                         alert("Berhasil menghapus penerbit")

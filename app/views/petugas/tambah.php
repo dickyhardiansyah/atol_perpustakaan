@@ -53,7 +53,7 @@
     $(document).ready(() => {
         $('#tambah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/petugas/tambah.php',
+                url: '<?php echo ROOT ?>app/controllers/petugas/tambah.php',
                 type: 'POST',
                 data: {
                     nama: $('#nama').val(),

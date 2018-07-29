@@ -66,7 +66,7 @@
 
         $('#tambah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/anggota/tambah.php',
+                url: '<?php echo ROOT ?>app/controllers/anggota/tambah.php',
                 type: 'POST',
                 data: {
                     nama: $('#nama').val(),

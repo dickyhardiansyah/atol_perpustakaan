@@ -59,7 +59,7 @@
                         <td><?php echo $item->username; ?></td>
                         <td id='<?php echo $item->idPetugas ?>'>
                             <button class='btn red accent-4 waves-effect waves-light hapus'><i class='material-icons'>delete</i></button>
-                            <a class='btn red accent-4 waves-effect waves-light edit' href='/perpustakaan/petugas/ubah.php?id=<?php echo $item->idPetugas ?>'><i class='material-icons'>edit</i></a>
+                            <a class='btn red accent-4 waves-effect waves-light edit' href='<?php echo ROOT ?>petugas/ubah.php?id=<?php echo $item->idPetugas ?>'><i class='material-icons'>edit</i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -129,7 +129,7 @@
                     
                     const editButton = $('<a>', {
                         class: 'btn red accent-4 waves-effect waves-light edit',
-                        href: `/perpustakaan/petugas/ubah.php?id=${item.idPetugas}`
+                        href: `<?php echo ROOT ?>petugas/ubah.php?id=${item.idPetugas}`
                     }).append($('<i>', { class: 'material-icons' }).append('edit'))
                     
                     td.append(deleteButton)
@@ -142,7 +142,7 @@
 
         const filter = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/petugas/filter.php',
+                url: '<?php echo ROOT ?>app/controllers/petugas/filter.php',
                 type: 'POST',
                 data: {
                     orderby: $('#orderby').val(),
@@ -159,7 +159,7 @@
 
                         if (confirm(`Apakah anda yakin ingin menghapus petugas dengan id ${targetId}`)) {
                             $.ajax({
-                                url: `/perpustakaan/app/controllers/petugas/hapus.php?id=${targetId}`,
+                                url: `<?php echo ROOT ?>app/controllers/petugas/hapus.php?id=${targetId}`,
                                 type: 'GET',
                                 success: (response) => {
                                     alert('Berhasil menghapus petugas')
@@ -199,7 +199,7 @@
 
             if (confirm(`Apakah anda yakin ingin menghapus petugas dengan id ${targetId}`)) {
                 $.ajax({
-                    url: `/perpustakaan/app/controllers/petugas/hapus.php?id=${targetId}`,
+                    url: `<?php echo ROOT ?>app/controllers/petugas/hapus.php?id=${targetId}`,
                     type: 'GET',
                     success: (response) => {
                         alert('Berhasil menghapus petugas')

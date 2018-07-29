@@ -19,7 +19,7 @@
     $(document).ready(() => {
         $('#tambah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/genre/tambah.php',
+                url: '<?php echo ROOT ?> app/controllers/genre/tambah.php',
                 type: 'POST',
                 data: {
                     nama: $('#nama').val(),

@@ -149,21 +149,6 @@
                     tr.append($('<td>').append(item.tanggalPeminjaman))
                     tr.append($('<td>').append(item.tanggalPengembalian))
                     tr.append($('<td>').append(item.tanggalDikembalikan ? item.tanggalDikembalikan : '-'))
-
-                    const td = $('<td>', { id: item.idPeminjaman })
-
-                    const deleteButton = $('<button>', {
-                        class: 'btn red accent-4 waves-effect waves-light hapus'
-                    }).append($('<i>', { class: 'material-icons' }).append('delete'))
-                    
-                    const editButton = $('<a>', {
-                        class: 'btn red accent-4 waves-effect waves-light edit',
-                        href: `/perpustakaan/peminjaman/ubah.php?id=${item.idPeminjaman}`
-                    }).append($('<i>', { class: 'material-icons' }).append('edit'))
-                    
-                    td.append(deleteButton)
-                    td.append(editButton)
-                    tr.append(td)
                     $('tbody').append(tr)
                 }
             }
@@ -171,7 +156,7 @@
 
         const filter = () => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/transaksi/filter.php',
+                url: '<?php echo ROOT ?>app/controllers/transaksi/filter.php',
                 type: 'POST',
                 data: {
                     orderby: $('#orderby').val(),
@@ -193,7 +178,7 @@
 
                         if (confirm(`Apakah anda yakin ingin menghapus peminjaman dengan id ${targetId}`)) {
                             $.ajax({
-                                url: `/perpustakaan/app/controllers/peminjaman/hapus.php?id=${targetId}`,
+                                url: `<?php echo ROOT ?>app/controllers/peminjaman/hapus.php?id=${targetId}`,
                                 type: 'GET',
                                 success: (response) => {
                                     alert("Berhasil menghapus peminjaman")
@@ -220,9 +205,11 @@
             $('#nama').val($('#name').val())
             filter()
         })
+        $('#id').change(() => filter())
         $('#status').change(() => filter())
         $('#buku').keyup(() => filter())
-        $('#tanggalDipinjam').keyup(() => filter())
+        $('#tanggalPeminjaman').keyup(() => filter())
+        $('#tanggalPengembalian').keyup(() => filter())
         $('#instansi').keyup(() => filter())
         $('#tanggalDikembalikan').keyup(() => filter())
         $('#orderby').change(() => filter())

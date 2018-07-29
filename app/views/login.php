@@ -37,7 +37,7 @@
             $('#login-button').click(() => {
                 $.ajax({
                     type: 'POST',
-                    url: '/perpustakaan/app/controllers/login/login.php',
+                    url: '<?php echo ROOT ?>app/controllers/login/login.php',
                     data: {
                         username: $('#username').val(),
                         password: $('#password').val(),

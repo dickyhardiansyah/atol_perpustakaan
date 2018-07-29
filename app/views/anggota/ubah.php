@@ -68,7 +68,7 @@
 
         $('#ubah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/anggota/ubah.php',
+                url: '<?php echo ROOT ?>app/controllers/anggota/ubah.php',
                 type: 'POST',
                 data: {
                     id: $('#id').val(),
@@ -83,7 +83,7 @@
                     const resp = JSON.parse(response)
                     if (resp.status === 200) {
                         alert('Berhasil memperbarui anggota')
-                        window.location = '/perpustakaan/anggota'
+                        window.location = '<?php echo ROOT ?>anggota'
                     } else {
                         alert(resp.message)
                     }

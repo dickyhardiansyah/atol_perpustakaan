@@ -55,7 +55,7 @@
     $(document).ready(() => {
         $('#ubah').click(() => {
             $.ajax({
-                url: '/perpustakaan/app/controllers/petugas/ubah.php',
+                url: '<?php echo ROOT ?>app/controllers/petugas/ubah.php',
                 type: 'POST',
                 data: {
                     id: $('#id').val(),
@@ -70,7 +70,7 @@
                     const resp = JSON.parse(response)
                     if (resp.status === 200) {
                         alert('Berhasil memperbarui petugas')
-                        window.location = '/perpustakaan/petugas'
+                        window.location = '<?php echo ROOT ?>petugas'
                     } else {
                         alert(resp.message)
                     }

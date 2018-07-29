@@ -3,7 +3,7 @@
 include_once('../../core/init.php');
 
 if (!isset($_GET['id'])) {
-    redirect('/perpustakaan/penerbit');
+    redirect(ROOT . 'penerbit');
 }
 
 include_once('../../resources/status.php');
