@@ -20,7 +20,7 @@ class Genre {
 
     public static function findAll() {
         $db = new Database();
-        $db->execute('SELECT * FROM ' . self::$TABLE_NAME);
+        $db->execute('SELECT * FROM ' . self::$TABLE_NAME . ' ORDER BY genre');
 
         $genre = [];
         while($row = $db->fetchAssoc()) {

@@ -46,7 +46,7 @@ class Petugas {
 
     public static function findAll() {
         $db = new Database();
-        $db->execute('SELECT * FROM ' . self::$TABLE_NAME);
+        $db->execute('SELECT * FROM ' . self::$TABLE_NAME . ' ORDER BY nama');
 
         $petugas = [];
         while($row = $db->fetchAssoc()) {
