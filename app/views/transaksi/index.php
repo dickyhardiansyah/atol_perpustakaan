@@ -148,7 +148,7 @@
                     tr.append($('<td>').append(item.status))
                     tr.append($('<td>').append(item.tanggalPeminjaman))
                     tr.append($('<td>').append(item.tanggalPengembalian))
-                    tr.append($('<td>').append(item.tanggalDikembalikan))
+                    tr.append($('<td>').append(item.tanggalDikembalikan ? item.tanggalDikembalikan : '-'))
 
                     const td = $('<td>', { id: item.idPeminjaman })
 

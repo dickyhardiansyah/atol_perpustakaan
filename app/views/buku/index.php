@@ -44,7 +44,9 @@
                     <td>Stok</td>
                     <td>Penerbit</td>
                     <td>Genre</td>
+                    <?php if ($_SESSION['userJenis'] !== 'Transaksi') { ?>
                     <td>Aksi</td>
+                    <?php } ?>
                 </tr>
             </thead>
 
@@ -58,7 +60,9 @@
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <?php if ($_SESSION['userJenis'] !== 'Transaksi') { ?>
                         <td>-</td>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
                 <?php foreach ($buku as $item) { ?>
@@ -70,10 +74,12 @@
                         <td><?php echo $item->stok; ?></td>
                         <td><?php echo $item->penerbit; ?></td>
                         <td><?php echo $item->genre; ?></td>
+                        <?php if ($_SESSION['userJenis'] !== 'Transaksi') { ?>
                         <td id="<?php echo $item->kodeBuku ?>">
                             <button class="btn red accent-4 waves-effect waves-light hapus"><i class="material-icons">delete</i></button>
                             <a class="btn red accent-4 waves-effect waves-light edit" href="/perpustakaan/buku/ubah.php?id=<?php echo $item->kodeBuku ?>"><i class="material-icons">edit</i></a>
                         </td>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -152,6 +158,7 @@
                     tr.append($('<td>').append(item.penerbit))
                     tr.append($('<td>').append(item.genre))
 
+                    <?php if ($_SESSION['userJenis'] !== 'Transaksi') { ?>
                     const td = $('<td>', { id: item.kodeBuku })
 
                     const deleteButton = $('<button>', {
@@ -166,6 +173,7 @@
                     td.append(deleteButton)
                     td.append(editButton)
                     tr.append(td)
+                    <?php } ?>
                     $('tbody').append(tr)
                 }
             }
