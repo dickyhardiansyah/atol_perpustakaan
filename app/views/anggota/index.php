@@ -186,9 +186,9 @@
                         const target = $(evt.target)
                         const targetId = target.parents('td').attr('id')
 
-                        if (confirm(`Apakah anda yakin ingin menghapus anggota dengan kode ${targetId}`)) {
+                        if (confirm(`Apakah anda yakin ingin menghapus anggota dengan id ${targetId}`)) {
                             $.ajax({
-                                url: `/perpustakaan/app/controllers/anggota/hapus.php?kode=${targetId}`,
+                                url: `/perpustakaan/app/controllers/anggota/hapus.php?id=${targetId}`,
                                 type: 'GET',
                                 success: (response) => {
                                     alert("Berhasil menghapus anggota")
