@@ -1,13 +1,13 @@
 <?php include_once('../app/views/templates/header.php'); ?>
 
-<main class="valign-wrapper" style="height: 100%">
+<main class="valign-wrapper">
     <div class="container">
         <form>
             <input type="hidden" id="kode_lama" value="<?php echo $buku->kodeBuku ?>">
 
             <div class="input-field">
                 <label for="kode">Kode Buku</label>
-                <input type="text" maxlength="10" name="kode" id="kode" class="validate" value="<?php echo $buku->kodeBuku ?>">
+                <input type="text" maxlength="10" name="kode" id="kode" class="validate" value="<?php echo $buku->kodeBuku ?>" disabled>
             </div>
 
             <div class="input-field">
