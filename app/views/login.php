@@ -47,7 +47,7 @@
                         console.log(response)
                         const resp = JSON.parse(response);
                         if (resp.status === 200) {
-                            window.location = '<?php echo ROOT ?>''
+                            window.location = '<?php echo ROOT ?>'
                         } else {
                             alert(resp.message)
                         }
