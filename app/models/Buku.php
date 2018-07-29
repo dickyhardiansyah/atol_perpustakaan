@@ -96,4 +96,35 @@ class Buku {
 
         return null;
     }
+
+    public static function byGenre($idGenre) {
+        $query = "SELECT kode_buku, judul FROM " . self::$TABLE_NAME . " WHERE id_genre like ?";
+
+        $db = new Database();
+        $results = $db->prepareAndExecute($query, 's', '%' . $idGenre . '%');
+
+        $results->bind_result($kode, $nama);
+        $judul = [];
+        while ($results->fetch()) {
+            $judul[] = [
+                "kode" => $kode,
+                "judul" => $nama
+            ];
+        }
+
+        return $judul;
+    }
+
+    public function save() {
+        Buku::update([
+            "kode" => $this->kodeBuku,
+            "judul" => $this->judul,
+            "penulis" => $this->penulis,
+            "tahun" => $this->tahunTerbit,
+            "stok" => $this->stok,
+            "kodePenerbit" => $this->kodePenerbit,
+            "idGenre" => $this->idGenre,
+            "kodeLama" => $this->kodeBuku
+        ]);
+    }
 }

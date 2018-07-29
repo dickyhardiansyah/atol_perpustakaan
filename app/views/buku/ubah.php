@@ -58,11 +58,6 @@
 <?php include_once('../app/views/templates/footer.php'); ?>
 
 <script>
-    Number.prototype.pad = function(size) {
-        var s = String(this);
-        while (s.length < (size || 2)) {s = "0" + s;}
-        return s;
-    }
     $(document).ready(() => {
         const penerbit = JSON.parse('<?php echo json_encode($penerbit); ?>') 
         const genre = JSON.parse('<?php echo json_encode($genre); ?>') 
@@ -90,15 +85,19 @@
                     idGenre: idGenre
                 },
                 success: (response) => {
-                    const num = parseInt(response) + 1
-                    bookNum = pad(num, 5)
+                    if (kodePenerbit === <?php echo $buku->kodePenerbit ?> && idGenre === <?php echo $buku->idGenre ?>) {
+                        bookNum = '<?php echo $buku->kodeBuku ?>'.substring('<?php echo $buku->kodeBuku ?>'.length - 3)
+                    } else {
+                        const num = parseInt(response) + 1
+                        bookNum = pad(num, 3)
+                    }
                     changeKodeBuku()
                 }
             })
         }
 
         $('#id_genre').change(() => {
-            idGenre = $('#id_genre').val()
+            idGenre = pad($('#id_genre').val(), 3)
             getBookNum()
         })
 

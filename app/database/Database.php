@@ -16,7 +16,6 @@ class Database {
 
     public function prepareAndExecute($query, $dType, ...$value) {
         $this->stmt = $this->link->prepare($query);
-        echo $this->link->error;
         $this->stmt->bind_param($dType, ...$value);
         $this->stmt->execute();
         return $this->stmt;

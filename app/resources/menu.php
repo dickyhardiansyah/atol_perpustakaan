@@ -57,9 +57,9 @@ function getNavbarSubMenu($usertype) {
                 [
                     "id" => "targetTransaksi",
                     "menus" => [
-                        [ "title" => "Peminjaman", "link" => "/perpustakaan/peminjaman" ],
-                        [ "title" => "Pengembalian", "link" => "/perpustakaan/pengembalian" ],
-                        [ "title" => "Lihat Transaksi", "link" => "/perpustakaan/transaksi" ]
+                        [ "title" => "Peminjaman", "link" => "/perpustakaan/transaksi/peminjaman.php" ],
+                        [ "title" => "Pengembalian", "link" => "/perpustakaan/transaksi/pengembalian.php" ],
+                        [ "title" => "Lihat Peminjaman", "link" => "/perpustakaan/transaksi" ]
                     ]
                 ],
             ];
@@ -95,9 +95,9 @@ function getNavbarSubMenu($usertype) {
                 [
                     "id" => "targetTransaksi",
                     "menus" => [
-                        [ "title" => "Peminjaman", "link" => "/perpustakaan/peminjaman" ],
-                        [ "title" => "Pengembalian", "link" => "/perpustakaan/pengembalian" ],
-                        [ "title" => "Lihat Transaksi", "link" => "/perpustakaan/transaksi" ]
+                        [ "title" => "Peminjaman", "link" => "/perpustakaan/transaksi/peminjaman.php" ],
+                        [ "title" => "Pengembalian", "link" => "/perpustakaan/transaksi/pengembalian.php" ],
+                        [ "title" => "Lihat Peminjaman", "link" => "/perpustakaan/transaksi" ]
                     ]
                 ]
             ];

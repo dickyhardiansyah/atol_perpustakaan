@@ -84,14 +84,14 @@
                 },
                 success: (response) => {
                     const num = parseInt(response) + 1
-                    bookNum = pad(num, 5)
+                    bookNum = pad(num, 3)
                     changeKodeBuku()
                 }
             })
         }
 
         $('#id_genre').change(() => {
-            idGenre = $('#id_genre').val()
+            idGenre = pad($('#id_genre').val(), 3)
             getBookNum()
         })
 
