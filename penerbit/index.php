@@ -10,4 +10,4 @@ $navMenu = getNavbarMenu($_SESSION['userJenis']);
 $navSubMenu = getNavbarSubMenu($_SESSION['userJenis']);
 $penerbit = Penerbit::findAll();
 
-include_once('../app/views/Penerbit/index.php');
+include_once('../app/views/penerbit/index.php');
