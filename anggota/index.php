@@ -10,4 +10,4 @@ $navMenu = getNavbarMenu($_SESSION['userJenis']);
 $navSubMenu = getNavbarSubMenu($_SESSION['userJenis']);
 $anggota = Anggota::findAll();
 
-include_once('../app/views/Anggota/index.php');
+include_once('../app/views/anggota/index.php');
