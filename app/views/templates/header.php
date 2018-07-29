@@ -14,7 +14,7 @@
     <header>
         <nav class="blue darken-1">
             <div class="nav-wrapper container">
-                <a href="/perpustakaan" class="brand-logo">Perpustakaan</a>
+                <a href="<?php echo ROOT ?>" class="brand-logo">Perpustakaan</a>
                 <ul class="right">
                     <?php foreach ($navMenu as $menu) { ?>
                     <li>
