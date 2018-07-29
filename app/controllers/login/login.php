@@ -8,7 +8,6 @@ if (!isset($_POST['login'])) {
 
 include_once('../../resources/status.php');
 include_once('../../database/Database.php');
-include_once('../../database/QueryBuilder.php');
 include_once('../../models/Petugas.php');
 
 $username = $_POST['username'];
@@ -20,7 +19,7 @@ if (empty($username) || empty($password)) {
         "message" => 'Username atau password tidak boleh kosong.'
     ]);
 } else {
-    $petugas = Petugas::where('username', '=', $username)->get();
+    $petugas = Petugas::findByUsername($username);
 
     foreach ($petugas as $item) {
         if (password_verify($password, $item->password)) {

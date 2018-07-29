@@ -17,22 +17,6 @@ class Petugas {
         $this->password = $password;
     }
 
-    public static function get($query, $value) {
-        $database = new Database();
-        
-        $results = $database->prepareAndExecute($query, 's', $value);
-        $results->bind_result($id, $nama, $jenis, $username, $password);
-
-        $petugas = [];
-        while ($results->fetch()) {
-            $petugas[] = new Petugas($id, $nama, $jenis, $username, $password);
-        }
-
-        $database->close();
-
-        return $petugas;
-    }
-
     public static function where($selector, $comparator, $value) {
         return new QueryBuilder("SELECT * FROM " . self::$TABLE_NAME . " WHERE $selector $comparator ?", __CLASS__, $value);
     }
@@ -98,6 +82,22 @@ class Petugas {
         while ($results->fetch()) {
             $petugas[] = new Petugas($id, $nama, $jenis, $username, $password);
         }
+
+        return $petugas;
+    }
+
+    public static function findByUsername($username) {
+        $database = new Database();
+        
+        $results = $database->prepareAndExecute("SELECT * FROM petugas WHERE username=?", 's', $username);
+        $results->bind_result($id, $nama, $jenis, $username, $password);
+
+        $petugas = [];
+        while ($results->fetch()) {
+            $petugas[] = new Petugas($id, $nama, $jenis, $username, $password);
+        }
+
+        $database->close();
 
         return $petugas;
     }
