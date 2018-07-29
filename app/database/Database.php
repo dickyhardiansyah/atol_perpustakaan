@@ -7,6 +7,7 @@ class Database {
     
     public function __construct() {
         $this->link = new mysqli('52.230.4.225', 'root', 'code@labs', '10116167_perpustakaan');
+        echo $this->link->error;
     }
 
     public function execute($query) {
