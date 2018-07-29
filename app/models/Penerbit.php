@@ -20,7 +20,7 @@ class Penerbit {
 
     public static function findAll() {
         $db = new Database();
-        $db->execute('SELECT * FROM ' . self::$TABLE_NAME);
+        $db->execute('SELECT * FROM ' . self::$TABLE_NAME . ' ORDER BY nama');
 
         $Penerbit = [];
         while($row = $db->fetchAssoc()) {
@@ -54,5 +54,24 @@ class Penerbit {
         $db = new Database();
         $db->prepareAndExecute($query, 'sss', $data['kode'], $data['nama'], $data['kodeLama'])
             ->close();
+    }
+
+    public static function filter($data) {
+        $query = "SELECT * FROM " . self::$TABLE_NAME . " WHERE nama LIKE ? AND kode_penerbit LIKE ? ORDER BY " . $data['orderby'];  
+        $db = new Database();
+        $results = $db->prepareAndExecute(
+            $query, 
+            'ss', 
+            '%' . $data['nama'] . '%', 
+            '%' . $data['id'] . '%'
+        );
+
+        $results->bind_result($id, $nama);
+        $penerbit = [];
+        while ($results->fetch()) {
+            $penerbit[] = new Penerbit($id, $nama);
+        }
+
+        return $penerbit;
     }
 }
