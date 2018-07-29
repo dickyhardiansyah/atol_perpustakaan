@@ -1,5 +1,7 @@
 <?php include_once('../app/views/templates/header.php'); ?>
 
+<br><br>
+
 <main class="valign-wrapper">
     <div class="container">
         <form>
@@ -54,6 +56,8 @@
         </form>
     </div>
 </main>
+
+<br><br>
 
 <?php include_once('../app/views/templates/footer.php'); ?>
 

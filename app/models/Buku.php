@@ -127,4 +127,31 @@ class Buku {
             "kodeLama" => $this->kodeBuku
         ]);
     }
+
+    public static function filter($data) {
+        $db = new Database();
+        $results = $db->prepareAndExecute('SELECT kode_buku, judul, penulis, tahun_terbit, stok, nama, genre, buku.kode_penerbit, buku.id_genre FROM ' 
+                    . self::$TABLE_NAME . ' JOIN penerbit USING (kode_penerbit) JOIN genre USING (id_genre) WHERE kode_buku LIKE ? AND judul LIKE ? AND penulis LIKE ? AND tahun_terbit LIKE ? AND stok LIKE ? AND nama LIKE ? AND genre LIKE ?' 
+                    . ' ORDER BY ' . $data['orderby'], "sssssss",
+                    '%' . $data['kode'] . '%',
+                    '%' . $data['judul'] . '%',
+                    '%' . $data['penulis'] . '%',
+                    '%' . $data['tahun'] . '%',
+                    '%' . $data['stok'] . '%',
+                    '%' . $data['penerbit'] . '%',
+                    '%' . $data['genre'] . '%'
+                );
+
+        $results->bind_result($kode, $judul, $penulis, $tahun, $stok, $penerbit, $genre, $kode_penerbit, $id_genre);
+        $buku = [];
+        while($results->fetch()) {
+            $fetchedBook = new Buku($kode, $judul, $penulis, $tahun, $stok, $kode_penerbit, $id_genre);
+            $fetchedBook->penerbit = $penerbit;
+            $fetchedBook->genre = $genre;      
+            $buku[] = $fetchedBook;      
+        }
+
+        $db->close();
+        return $buku;
+    }
 }

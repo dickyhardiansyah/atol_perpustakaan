@@ -153,6 +153,21 @@
                 success: (response) => {
                     petugas = JSON.parse(response)
                     inflateTable()
+                    $('.hapus').click(evt => {
+                        const target = $(evt.target)
+                        const targetId = target.parents('td').attr('id')
+
+                        if (confirm(`Apakah anda yakin ingin menghapus petugas dengan id ${targetId}`)) {
+                            $.ajax({
+                                url: `/perpustakaan/app/controllers/petugas/hapus.php?id=${targetId}`,
+                                type: 'GET',
+                                success: (response) => {
+                                    alert('Berhasil menghapus petugas')
+                                    target.parents('tr').remove()
+                                }
+                            })
+                        }
+                    })
                 }
             })
         }
