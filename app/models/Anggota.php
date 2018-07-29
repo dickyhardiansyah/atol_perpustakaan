@@ -65,4 +65,27 @@ class Anggota {
         $db->prepareAndExecute($query, 'sssssd', $data['nama'], $data['jk'], $data['alamat'], $data['tanggalLahir'], $data['instansi'], $data['id'])
             ->close();
     }
+
+    public static function filter($data) {
+        $db = new Database();
+        $results = $db->prepareAndExecute('SELECT * FROM ' 
+                    . self::$TABLE_NAME . ' WHERE nama LIKE ? AND jenis_kelamin LIKE ? AND alamat LIKE ? AND tanggal_lahir LIKE ? AND instansi LIKE ? AND tanggal_bergabung LIKE ?' 
+                    . ' ORDER BY ' . $data['orderby'], "ssssss",
+                    '%' . $data['nama'] . '%',
+                    '%' . $data['jenisKelamin'] . '%',
+                    '%' . $data['alamat'] . '%',
+                    '%' . $data['tanggalLahir'] . '%',
+                    '%' . $data['instansi'] . '%',
+                    '%' . $data['tanggalBergabung'] . '%'
+                );
+
+        $results->bind_result($id, $nama, $jk, $alamat, $ttl, $instansi, $bergabung);
+        $anggota = [];
+        while($results->fetch()) {
+            $anggota[] = new Anggota($id, $nama, $jk, $alamat, $ttl, $instansi, $bergabung);
+        }
+
+        $db->close();
+        return $anggota;
+    }
 }

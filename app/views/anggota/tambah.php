@@ -9,6 +9,8 @@
 }
 </style>
 
+<br><br>
+
 <main class="valign-wrapper">
     <div class="container">
         <form>
@@ -50,6 +52,8 @@
         </form>
     </div>
 </main>
+
+<br><br>
 
 <?php include_once('../app/views/templates/footer.php'); ?>
 
