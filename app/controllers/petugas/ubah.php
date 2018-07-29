@@ -8,7 +8,6 @@ if (!isset($_POST['ubah'])) {
 
 include_once('../../resources/status.php');
 include_once('../../database/Database.php');
-include_once('../../database/QueryBuilder.php');
 include_once('../../models/Petugas.php');
 
 $id = $_POST['id'];

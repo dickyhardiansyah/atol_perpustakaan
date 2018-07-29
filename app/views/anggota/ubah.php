@@ -11,7 +11,7 @@
 
 <br><br>
 
-<main class="valign-wrapper" style="height: 100%">
+<main class="valign-wrapper">
     <div class="container">
         <form>
             <input type="hidden" id="id" value="<?php echo $anggota->idAnggota ?>">
