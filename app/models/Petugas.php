@@ -81,4 +81,24 @@ class Petugas {
         $db->prepareAndExecute($query, 'ssssd', $data['nama'], $data['jenis'], $data['username'], $data['password'], $data['id'])
             ->close();
     }
+
+    public static function filter($data) {
+        $query = "SELECT * FROM " . self::$TABLE_NAME . " WHERE nama LIKE ? AND jenis LIKE ? AND username LIKE ? ORDER BY " . $data['orderby'];  
+        $db = new Database();
+        $results = $db->prepareAndExecute(
+            $query, 
+            'sss', 
+            '%' . $data['nama'] . '%', 
+            '%' . $data['jenis'] . '%',
+            '%' . $data['username'] . '%'
+        );
+
+        $results->bind_result($id, $nama, $jenis, $username, $password);
+        $petugas = [];
+        while ($results->fetch()) {
+            $petugas[] = new Petugas($id, $nama, $jenis, $username, $password);
+        }
+
+        return $petugas;
+    }
 }
