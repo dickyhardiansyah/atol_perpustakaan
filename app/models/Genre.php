@@ -55,4 +55,23 @@ class Genre {
         $db->prepareAndExecute($query, 'sd', $data['nama'], $data['id'])
             ->close();
     }
+
+    public static function filter($data) {
+        $query = "SELECT * FROM " . self::$TABLE_NAME . " WHERE genre LIKE ? AND id_genre LIKE ? ORDER BY " . $data['orderby'];  
+        $db = new Database();
+        $results = $db->prepareAndExecute(
+            $query, 
+            'ss', 
+            '%' . $data['nama'] . '%', 
+            '%' . $data['id'] . '%'
+        );
+
+        $results->bind_result($id, $nama);
+        $genre = [];
+        while ($results->fetch()) {
+            $genre[] = new Genre($id, $nama);
+        }
+
+        return $genre;
+    }
 }

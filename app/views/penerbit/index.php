@@ -154,7 +154,20 @@
 
         $('#orderby').change(() => filter())
         $('#id').keyup(() => filter())
-        $('#nama').keyup(() => filter())
+        $('#nama').keyup(() => {
+            filter()
+            if (!$('#nameLabel').hasClass('active')) {
+                $('#nameLabel').addClass('active')
+            }
+            $('#name').val($('#nama').val())
+        })
+        $('#name').keyup(() => {
+            if (!$('#namaLabel').hasClass('active')) {
+                $('#namaLabel').addClass('active')
+            }
+            $('#nama').val($('#name').val())
+            filter()
+        })
 
         $('select').formSelect()
         $('.modal').modal()
