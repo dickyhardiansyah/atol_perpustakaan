@@ -1,6 +1,6 @@
 <?php 
 
-define('ROOT', '/');
+define('ROOT', '/perpustakaan/');
 
 function redirect($location) {
     header("Location: $location");
